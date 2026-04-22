@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: 222 34% 6%;
+    --foreground: 210 40% 97%;
+    --card: 222 28% 9%;
+    --card-foreground: 210 40% 97%;
+    --popover: 222 28% 9%;
+    --popover-foreground: 210 40% 97%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 22% 15%;
+    --secondary-foreground: 210 40% 94%;
+    --muted: 222 22% 12%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 222 22% 18%;
+    --accent-foreground: 210 40% 97%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 22% 18%;
+    --input: 222 22% 18%;
+    --ring: 0 72% 51%;
+    --radius: 0.5rem;
+    --font-display: "Bebas Neue", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --gradient-hero: linear-gradient(to top, hsl(222 34% 6%), transparent);
+    --gradient-card: linear-gradient(180deg, transparent 40%, hsl(222 34% 6% / 0.9) 100%);
+    --skeleton-start: 0 0% 12%;
+    --skeleton-mid: 0 0% 18%;
+    --scrollbar-track: 222 22% 15%;
+    --scrollbar-thumb: 0 72% 51%;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 222 47% 18%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 215 16% 40%;
+    --accent: 220 14% 90%;
+    --accent-foreground: 222 47% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 86%;
+    --input: 214 32% 86%;
+    --ring: 221 83% 53%;
+    --gradient-hero: linear-gradient(to top, hsl(0 0% 98%), transparent);
+    --gradient-card: linear-gradient(180deg, transparent 40%, hsl(0 0% 100% / 0.92) 100%);
+    --skeleton-start: 220 14% 91%;
+    --skeleton-mid: 220 14% 85%;
+    --scrollbar-track: 220 14% 90%;
+    --scrollbar-thumb: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  html {
+    background: hsl(var(--background));
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--scrollbar-track));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--scrollbar-thumb));
+  border-radius: 3px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, hsl(var(--skeleton-start)) 25%, hsl(var(--skeleton-mid)) 50%, hsl(var(--skeleton-start)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
